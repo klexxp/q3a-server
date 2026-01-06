@@ -30,10 +30,6 @@ IOQ3DED_BIN=$(ls /opt/quake3/ioq3ded*)
 if [ $(echo ${IOQ3DED_BIN} | wc -l) -gt 1 ]; then
     echo "Found more than one file matching /opt/quake3/ioq3ded*:"
     echo ${IOQ3DED_BIN}
-    echo "Cannot determine name of ioquake3 server executable."
-    echo "Please report this as an issue at https://github.com/fpiesche/docker-ioquake3-server"
-    echo "including your Docker command line (or compose file/Kubernetes manifest) and the above"
-    echo "list of executables found."
     exit 1
 fi
 
