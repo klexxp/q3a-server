@@ -5,9 +5,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const defaultServers = [
-  { name: 'FFA Arena', host: 'quake1', port: 27960 },
-  { name: 'CTF Grounds', host: 'quake2', port: 27960 },
-  { name: 'Missionpack Siege', host: 'quake3', port: 27960 },
+  { name: 'FFA', host: 'quake1', port: 27960 },
+  { name: 'CTF', host: 'quake2', port: 27961 },
+  { name: 'Q3TA', host: 'quake3', port: 27962 },
 ];
 
 let servers;

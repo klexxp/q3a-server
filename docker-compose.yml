@@ -10,9 +10,8 @@ services:
       - ./configs:/opt/quake3/configs
     environment:
       - SERVER_ARGS=+exec server-ffa.cfg
-      - FASTDL_URL=http://localhost:8080
+      - FASTDL_URL=http://quake.pklan.net:8080
   quake2:
-    build: .
     image: ioq3-server
     container_name: quake2
     ports:
@@ -22,19 +21,19 @@ services:
       - ./configs:/opt/quake3/configs
     environment:
       - SERVER_ARGS=+exec server-ctf.cfg
-      - FASTDL_URL=http://localhost:8080
+      - FASTDL_URL=http://quake.pklan.net:8080
   quake3:
-    build: .
     image: ioq3-server
     container_name: quake3
     ports:
       - "27962:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
+      - ./missionpack:/opt/quake3/missionpack
       - ./configs:/opt/quake3/configs
     environment:
-      - SERVER_ARGS=+exec server-mp.cfg
-      - FASTDL_URL=http://localhost:8080
+      - SERVER_ARGS=+set fs_game missionpack +exec server-mp.cfg
+      - FASTDL_URL=http://quake.pklan.net:8080
 
   fastdl:
     image: nginx:1.27-alpine

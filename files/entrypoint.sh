@@ -1,10 +1,7 @@
 #!/bin/sh
 echo "Launching ioquake3 server version ${IOQUAKE3_COMMIT}..."
 
-echo "Copying default configs..."
-    cp /opt/quake3/default-configs/* /opt/quake3/baseq3/
-
-if [ "$(ls -A /opt/quake3/configs)" ]; then
+if [ "$(ls -A /opt/quake3/configs 2>/dev/null)" ]; then
     echo "Copying custom configs..."
     cp /opt/quake3/configs/* /opt/quake3/baseq3/
 fi
@@ -26,7 +23,7 @@ fi
 FASTDL_ARGS=""
 if [ -n "${FASTDL_URL}" ]; then
     echo "Fast download enabled via ${FASTDL_URL}."
-    FASTDL_ARGS="+seta sv_allowDownload 1 +seta sv_dlURL ${FASTDL_URL}"
+    FASTDL_ARGS="+seta sv_allowDownload 1 +seta sv_dlURL \"${FASTDL_URL}\""
 fi
 
 IOQ3DED_BIN=$(ls /opt/quake3/ioq3ded*)
