@@ -7,9 +7,12 @@ services:
       - "27960:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
+      - ./files/configs:/opt/quake3/configs:ro
     environment:
       - SERVER_ARGS=+exec server-ffa.cfg
-      - FASTDL_URL=http://quake.pklan.net:8080
+      - FASTDL_URL=${FASTDL_URL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SERVER_MOTD=${SERVER_MOTD}
   quake2:
     image: ioq3-server
     container_name: quake2
@@ -17,9 +20,12 @@ services:
       - "27961:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
+      - ./files/configs:/opt/quake3/configs:ro
     environment:
       - SERVER_ARGS=+exec server-ctf.cfg
-      - FASTDL_URL=http://quake.pklan.net:8080
+      - FASTDL_URL=${FASTDL_URL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SERVER_MOTD=${SERVER_MOTD}
   quake3:
     image: ioq3-server
     container_name: quake3
@@ -28,10 +34,12 @@ services:
     volumes:
       - ./baseq3:/opt/quake3/baseq3
       - ./missionpack:/opt/quake3/missionpack
+      - ./files/configs:/opt/quake3/configs:ro
     environment:
       - SERVER_ARGS=+set fs_game missionpack +exec server-mp.cfg
-      - FASTDL_URL=http://quake.pklan.net:8080
-
+      - FASTDL_URL=${FASTDL_URL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SERVER_MOTD=${SERVER_MOTD}
   fastdl:
     image: nginx:1.27-alpine
     container_name: fastdl

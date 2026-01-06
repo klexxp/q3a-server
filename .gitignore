@@ -3,3 +3,4 @@
 
 # Keep node_modules out of the repo
 landing/node_modules/
+.env
