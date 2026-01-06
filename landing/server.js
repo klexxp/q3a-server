@@ -5,9 +5,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const defaultServers = [
-  { name: 'FFA', host: 'quake1', port: 27960 },
-  { name: 'CTF', host: 'quake2', port: 27961 },
-  { name: 'Q3TA', host: 'quake3', port: 27962 },
+  { name: 'FFA', host: 'quake.pklan.net', port: 27960 },
+  { name: 'CTF', host: 'quake.pklan.net', port: 27961 },
+  { name: 'Q3TA', host: 'quake.pklan.net', port: 27962 },
 ];
 
 let servers;

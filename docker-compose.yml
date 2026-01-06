@@ -7,7 +7,6 @@ services:
       - "27960:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
-      - ./configs:/opt/quake3/configs
     environment:
       - SERVER_ARGS=+exec server-ffa.cfg
       - FASTDL_URL=http://quake.pklan.net:8080
@@ -18,7 +17,6 @@ services:
       - "27961:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
-      - ./configs:/opt/quake3/configs
     environment:
       - SERVER_ARGS=+exec server-ctf.cfg
       - FASTDL_URL=http://quake.pklan.net:8080
@@ -30,7 +28,6 @@ services:
     volumes:
       - ./baseq3:/opt/quake3/baseq3
       - ./missionpack:/opt/quake3/missionpack
-      - ./configs:/opt/quake3/configs
     environment:
       - SERVER_ARGS=+set fs_game missionpack +exec server-mp.cfg
       - FASTDL_URL=http://quake.pklan.net:8080
@@ -58,7 +55,7 @@ services:
       PORT: 3000
       SERVERS_JSON: |
         [
-          {"name": "FFA Arena", "host": "quake1", "port": 27960},
-          {"name": "CTF Grounds", "host": "quake2", "port": 27960},
-          {"name": "Missionpack Siege", "host": "quake3", "port": 27960}
+          {"name": "FFA", "host": "quake.pklan.net", "port": 27960},
+          {"name": "CTF", "host": "quake.pklan.net", "port": 27961},
+          {"name": "Q3TA", "host": "quake.pklan.net", "port": 27962}
         ]
