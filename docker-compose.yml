@@ -70,6 +70,6 @@ services:
       SERVERS_JSON: |
         [
           {"name": "FFA", "host": "quake1", "port": 27960, "displayPort": 27960},
-          {"name": "CTF", "host": "quake2", "port": 27960, "displayPort": 27961},
+          {"name": "OSP", "host": "quake2", "port": 27960, "displayPort": 27961},
           {"name": "Q3TA", "host": "quake3", "port": 27960, "displayPort": 27962}
         ]
