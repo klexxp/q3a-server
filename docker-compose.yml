@@ -3,46 +3,47 @@ services:
     build: .
     image: ioq3-server
     container_name: quake1
+    restart: unless-stopped
     ports:
       - "27960:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
-      - ./files/default-configs:/opt/quake3/default-configs:ro
-      - ./files/configs:/opt/quake3/configs:ro
+      - ./files/default-configs:/opt/quake3/default-configs
     environment:
-      - SERVER_ARGS=+exec server-ffa.cfg
+      - SERVER_ARGS=+exec server.cfg +exec ${FFA_CONFIG} +exec ${MAPS_FFA}
       - FASTDL_URL=${FASTDL_URL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - SERVER_MOTD=${SERVER_MOTD}
   quake2:
     image: ioq3-server
     container_name: quake2
+    restart: unless-stopped
     ports:
       - "27961:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
-      - ./files/default-configs:/opt/quake3/default-configs:ro
-      - ./files/configs:/opt/quake3/configs:ro
+      - ./files/default-configs:/opt/quake3/default-configs
     environment:
-      - SERVER_ARGS=+exec server-ctf.cfg
+      - SERVER_ARGS=+exec server.cfg +exec ${CTF_CONFIG} +exec ${MAPS_CTF}
       - FASTDL_URL=${FASTDL_URL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - SERVER_MOTD=${SERVER_MOTD}
   quake3:
     image: ioq3-server
     container_name: quake3
+    restart: unless-stopped
     ports:
       - "27962:27960/udp"
     volumes:
       - ./baseq3:/opt/quake3/baseq3
       - ./missionpack:/opt/quake3/missionpack
-      - ./files/default-configs:/opt/quake3/default-configs:ro
-      - ./files/configs:/opt/quake3/configs:ro
+      - ./files/default-configs:/opt/quake3/default-configs
     environment:
-      - SERVER_ARGS=+set fs_game missionpack +exec server-mp.cfg
+      - SERVER_ARGS=+set fs_game missionpack +exec server.cfg +exec ${Q3TA_CONFIG} +exec ${MAPS_Q3TA}
       - FASTDL_URL=${FASTDL_URL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - SERVER_MOTD=${SERVER_MOTD}
+
   fastdl:
     image: nginx:1.27-alpine
     container_name: fastdl

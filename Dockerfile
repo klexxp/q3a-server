@@ -31,10 +31,10 @@ ENV IOQUAKE3_COMMIT=${IOQUAKE3_COMMIT}
 RUN adduser ioq3ded -D
 COPY --chown=ioq3ded --from=builder /opt/quake3/ioq3ded /opt/quake3/ioq3ded
 
-ADD --chown=ioq3ded files/ /opt/quake3/
-RUN chmod +x /opt/quake3/entrypoint.sh
+ADD --chown=ioq3ded files/entrypoint.sh /opt/quake3/scripts/
+RUN chmod +x /opt/quake3/scripts/entrypoint.sh
 
 USER ioq3ded
 EXPOSE 27960/udp
 VOLUME [ "/opt/quake3/baseq3"]
-CMD ["/opt/quake3/entrypoint.sh"]
+CMD ["/opt/quake3/scripts/entrypoint.sh"]

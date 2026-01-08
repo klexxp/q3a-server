@@ -1,5 +1,6 @@
 # Ignore all Quake pak files
 *.pk3
+/baseq3/*.cfg
 
 # Keep node_modules out of the repo
 landing/node_modules/
